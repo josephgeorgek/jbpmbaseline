@@ -33,7 +33,7 @@
 		</dependency>
 
 
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId> jbpm-human-task-workitems</artifactId>
 			<version>7.35.0.Final</version>
@@ -63,6 +63,20 @@
 			<artifactId>drools-core</artifactId>
 			<version>7.35.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-human-task-jpa</artifactId>
+			<version>7.35.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-human-task-core</artifactId>
+			<version>7.35.0.Final</version>
+
+
+		</dependency>
+		
+		 -->
 
 
 
@@ -72,12 +86,7 @@
 			<version>7.35.0.Final</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jbpm</groupId>
-			<artifactId>jbpm-human-task-jpa</artifactId>
-			<version>7.35.0.Final</version>
-		</dependency>
-
+		
 
 
 		<dependency>
@@ -87,14 +96,7 @@
 
 		</dependency>
 
-		<dependency>
-			<groupId>org.jbpm</groupId>
-			<artifactId>jbpm-human-task-core</artifactId>
-			<version>7.35.0.Final</version>
-
-
-		</dependency>
-
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>

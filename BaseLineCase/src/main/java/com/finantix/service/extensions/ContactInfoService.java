@@ -43,18 +43,18 @@ public class ContactInfoService extends RESTWorkItemHandler {
 	@Override
 	public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
 		System.out.println("***");
-		System.out.println("AccountOnBoardingGetContactinfo v1.4.3");
+		System.out.println("ContactInfoService v1.4.3");
 		WorkItemImpl customworkItem = new WorkItemImpl();
 		String jsonString = "";
 		Map<String, Object> orignalparams = workItem.getParameters();
-		System.out.println("executeWorkItem orignalparams : " + orignalparams);
+		System.out.println("ContactInfoService orignalparams : " + orignalparams);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> jsonMap = null;
 		String jsonInputData = null;
 		
 		String contactId = String.valueOf( (Object) workItem.getParameter("contactId"));
-		System.out.println("executeWorkItem contactId : " + contactId );
+		System.out.println("ContactInfoService contactId : " + contactId );
 		
 		
 		try {
@@ -91,13 +91,13 @@ public class ContactInfoService extends RESTWorkItemHandler {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		String jsonObject = (String) results.get("Result");
 		
-		ClientInfoDTO client = new ClientInfoDTO();
+		/*ClientInfoDTO client = new ClientInfoDTO();
 
 		try {
 		
 			
 			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-			client = objectMapper.readValue(jsonObject, ClientInfoDTO.class);
+			//client = objectMapper.readValue(jsonObject, ClientInfoDTO.class);
 			System.out.println("executeWorkItem Result  contact  : " + client);
 			System.out.println("executeWorkItem Result  id  : " + client.getId());
 
@@ -131,11 +131,11 @@ public class ContactInfoService extends RESTWorkItemHandler {
 		} catch (Exception e) {
 			e.printStackTrace();
 		
-		}
+		}*/
 		
 		
 		
-		System.out.println("AccountOnBoardingGetContactinfo completeWorkItem  for workItem.getId: " + workItem.getId()+">>results:"+results);
+		System.out.println("ContactInfoService completeWorkItem  for workItem.getId: " + workItem.getId()+">>results:"+results);
 		System.out.println("***");
 		System.out.println("***");
 		manager.completeWorkItem(workItem.getId(), results);
