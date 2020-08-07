@@ -5,7 +5,7 @@
   <groupId>com.baseline</groupId>
   <artifactId>BaseLineCase</artifactId>
   <version>1.0.0-SNAPSHOT</version>
- <!--  <packaging>kjar</packaging>-->
+<packaging>kjar</packaging>
   <name>BaseLineCase</name>
   <description></description>
   
