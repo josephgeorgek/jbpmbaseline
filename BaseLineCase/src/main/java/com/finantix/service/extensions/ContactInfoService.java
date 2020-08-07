@@ -9,12 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.finantix.mdl.adbk.core.dto.AddressDTO;
-import com.finantix.mdl.adbk.core.dto.ContactDTO;
-import com.finantix.mdl.adbk.core.dto.ContactPartyDTO;
-import com.finantix.mdl.adbk.core.dto.ReviewDTO;
-import com.finantix.mdl.adbk.core.dto.RiskDTO;
-import com.finantix.solution.client.core.dto.ClientInfoDTO;
+
 
 import java.io.IOException;
 import java.util.HashMap;
