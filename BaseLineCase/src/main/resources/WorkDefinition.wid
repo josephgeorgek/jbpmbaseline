@@ -84,6 +84,18 @@
     "displayName" : "Sub Case",
     "icon" : "defaultsubcaseicon.png",
     "category" : "Cases"
+  ],
+  
+   [
+    "name" : "ContactInfoService",
+    "parameters" : [
+        "contactId" : new StringDataType()
+    ],
+    "results" : [
+        "Result" : new ObjectDataType(),
+    ],
+    "displayName" : "ContactInfoService",
+    "icon" : "defaultservicenodeicon.png",
+      "category" : "Finantix tasks"
   ]
-
 ]
