@@ -6,7 +6,7 @@
   <artifactId>MeetingActivity</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   
- <packaging>kjar</packaging> 
+ <packaging>kjar</packaging>
   <name>MeetingActivity</name>
   <description></description>
   
@@ -125,6 +125,6 @@
   	 <build>
         <defaultGoal>install</defaultGoal>
         <!-- Source directory configuration -->
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
 </build>
 </project>

@@ -1,4 +1,4 @@
-package src.main.java.com.finantix.service.extensions;
+package com.finantix.service.extensions;
 
 import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.process.WorkItemManager;
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.com.finantix.service.extensions.Constants;
+import com.finantix.service.extensions.Constants;
 
 import java.io.File;
 import java.io.IOException;
@@ -180,7 +180,7 @@ public class PostActivity extends RESTWorkItemHandler {
 		HttpResponse response = httpclient.execute(httppost);
 		String outputResponse;
 		logger.error("1 ----------------------------------------");
-		logger.error(response.getStatusLine());
+		logger.error(response.getStatusLine().toString());
 		logger.error("2 ----------------------------------------");
 		outputResponse = EntityUtils.toString(response.getEntity());
 		logger.error(outputResponse);
