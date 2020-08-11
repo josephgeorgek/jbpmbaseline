@@ -12,7 +12,7 @@
   <dependencies>
  	
 
-	
+		<!-- 
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-workitems-rest</artifactId>
@@ -28,7 +28,7 @@
 			<version>7.35.0.Final</version>
 
 		</dependency>
-	<!-- 
+
 	<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -98,19 +98,18 @@
 			<artifactId>jbpm-workitems-template-resources</artifactId>
 			<version>7.35.0.Final</version>
 		</dependency>
-		 -->
+		
 
 
 
 		
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
 			<version>4.5.12</version>
 		</dependency>
-
+ -->
 	
   </dependencies>
    <repositories>
@@ -124,5 +123,15 @@
         <defaultGoal>install</defaultGoal>
         <!-- Source directory configuration -->
         <sourceDirectory>src/main/java</sourceDirectory>
+          <!-- <plugins>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins> -->
 </build>
+
+
 </project>
