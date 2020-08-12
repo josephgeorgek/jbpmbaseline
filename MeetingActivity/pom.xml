@@ -9,7 +9,7 @@
  <packaging>kjar</packaging>
   <name>MeetingActivity</name>
   <description></description>
-  
+  <!--  
   <dependencies>
  	<dependency>
 			<groupId>org.drools</groupId>
@@ -28,6 +28,7 @@
 			<artifactId>jbpm-workitems-rest</artifactId>
 			<version>7.35.0.Final</version>
 		</dependency>
+		-->
 	<!-- 
 	<dependency>
 			<groupId>org.springframework</groupId>
