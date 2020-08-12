@@ -12,7 +12,7 @@
 	<description></description>
 	<dependencies>
 
-	</dependency>
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
