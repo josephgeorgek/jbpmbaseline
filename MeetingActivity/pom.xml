@@ -5,12 +5,12 @@
   <groupId>com.baseline</groupId>
   <artifactId>MeetingActivity</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  
- <packaging>kjar</packaging>
+  <packaging>kjar</packaging> 
   <name>MeetingActivity</name>
   <description></description>
-  <!--  
+  
   <dependencies>
+    <!--
  	<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
@@ -28,8 +28,7 @@
 			<artifactId>jbpm-workitems-rest</artifactId>
 			<version>7.35.0.Final</version>
 		</dependency>
-		-->
-	<!-- 
+	
 	<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -100,15 +99,9 @@
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-workitems-template-resources</artifactId>
 			<version>7.35.0.Final</version>
+			  -->
 		</dependency>
-		 -->
-
-
-
-		
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime 
-		<dependency>
+			<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
 			<version>4.5.12</version>
@@ -116,7 +109,7 @@
 
 	
   </dependencies>
-  -->
+
    <repositories>
     <repository>
       <id>guvnor-m2-repo</id>
