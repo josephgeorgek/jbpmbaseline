@@ -57,7 +57,7 @@ public class PostActivity extends RESTWorkItemHandler {
 
 	private static final String MULTIPART_MIXED_BOUNDARY_ACTIVITY = "multipart/mixed; boundary=activity-egdvve9pksq";
 
-	private static final String POST_ACTIVITY = "PostActivity v1.3.9";
+	private static final String POST_ACTIVITY = "PostActivity v1.4.0";
 
 	
 	String host = null;
@@ -95,7 +95,15 @@ public class PostActivity extends RESTWorkItemHandler {
 
 		Object obj = workItem.getParameter("jsonString");
 		logger.error("obj" + obj);
+		LinkedHashMap myLinkedHashMap = null;
+		
+		try {
 		LinkedHashMap myLinkedHashMap = (LinkedHashMap) obj;
+		} 
+		catch (Exception ex){
+			myLinkedHashMap = mapper.readValue(obj, Map.class);
+			
+		}
 		logger.error("myLinkedHashMap" + myLinkedHashMap);
 	
 		try {
