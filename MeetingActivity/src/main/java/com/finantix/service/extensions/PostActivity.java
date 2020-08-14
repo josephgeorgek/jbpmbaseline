@@ -105,7 +105,7 @@ public class PostActivity extends RESTWorkItemHandler {
 		} 
 		catch (Exception ex){
 			//Map<String, String>  myLinkedHashMapmap = mapper.readValue(obj, Map.class);
-			jsonString = obj;
+			jsonString = (String)obj;
 		}
 		logger.error("jsonString" + jsonString);
 	
