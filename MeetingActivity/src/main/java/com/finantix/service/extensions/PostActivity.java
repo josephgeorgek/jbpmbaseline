@@ -98,7 +98,7 @@ public class PostActivity extends RESTWorkItemHandler {
 		LinkedHashMap myLinkedHashMap = null;
 		
 		try {
-		LinkedHashMap myLinkedHashMap = (LinkedHashMap) obj;
+		 myLinkedHashMap = (LinkedHashMap) obj;
 		logger.error("myLinkedHashMap" + myLinkedHashMap);
 		jsonString = new ObjectMapper().writeValueAsString(myLinkedHashMap);
 		
