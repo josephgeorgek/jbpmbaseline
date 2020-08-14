@@ -99,20 +99,17 @@ public class PostActivity extends RESTWorkItemHandler {
 		
 		try {
 		LinkedHashMap myLinkedHashMap = (LinkedHashMap) obj;
+		logger.error("myLinkedHashMap" + myLinkedHashMap);
+		jsonString = new ObjectMapper().writeValueAsString(myLinkedHashMap);
+		
 		} 
 		catch (Exception ex){
-			myLinkedHashMap = mapper.readValue(obj, Map.class);
-			
+			//Map<String, String>  myLinkedHashMapmap = mapper.readValue(obj, Map.class);
+			jsonString = obj;
 		}
-		logger.error("myLinkedHashMap" + myLinkedHashMap);
+		logger.error("jsonString" + jsonString);
 	
-		try {
-			jsonString = new ObjectMapper().writeValueAsString(myLinkedHashMap);
-			logger.error("jsonString" + jsonString);
-		} catch (JsonProcessingException e1) {
-			e1.printStackTrace();
-		}
-		logger.error(jsonString);
+		
 
 		logger.error("executeWorkItem host : " + host + "  serverURL:" + REST_RS_ACTIVITYS +" jsonString  : " + jsonString);
 
