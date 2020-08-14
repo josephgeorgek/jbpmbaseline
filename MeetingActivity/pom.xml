@@ -10,6 +10,7 @@
 	<packaging>kjar</packaging>
 	<name>MeetingActivity</name>
 	<description></description>
+	<!--
 	<dependencies>
 
 
@@ -21,7 +22,7 @@
 
 
 	</dependencies>
-
+-->
 	<repositories>
 		<repository>
 			<id>guvnor-m2-repo</id>
