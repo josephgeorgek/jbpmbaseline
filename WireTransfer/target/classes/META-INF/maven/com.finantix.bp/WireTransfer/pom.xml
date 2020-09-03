@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.baseline</groupId>
-	<artifactId>MeetingActivity</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-<!--  <packaging>kjar</packaging> -->	
-	<name>MeetingActivity</name>
-	<description></description>
-
-	<dependencies>
-
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-simple</artifactId>
-    <version>1.6.1</version>
-</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>4.5.12</version>
-		</dependency>
-
-<dependency>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.finantix.bp</groupId>
+  <artifactId>WireTransfer</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+ <!--  <packaging>kjar</packaging> -->
+  <name>Wire Transfer</name>
+  <description>Wire Transfer - External and Own Account</description>
+  <dependencies>
+  	<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>5.0.8.RELEASE</version>
@@ -77,18 +62,15 @@
       <version>1.4.10</version>
       <scope>test</scope>
     </dependency>
-	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>guvnor-m2-repo</id>
-			<name>Guvnor M2 Repo</name>
-			<url>/maven2/</url>
-		</repository>
-	</repositories>
-	<build>
-		<defaultGoal>install</defaultGoal>
-		<!-- Source directory configuration -->
-		<sourceDirectory>src/main/java</sourceDirectory>
-	</build>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>7.35.0.Final</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
