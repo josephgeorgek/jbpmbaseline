@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.finantix.bp</groupId>
-  <artifactId>WireTransfer</artifactId>
+  <artifactId>WireTransferOLD</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>kjar</packaging> 
   <name>Wire Transfer</name>
-  <description>Wire Transfer - External and Own Account</description>
+  <description>Wire Transfer OLD - External and Own Account</description>
   <!-- <dependencies>
   	<dependency>
 			<groupId>org.springframework</groupId>
