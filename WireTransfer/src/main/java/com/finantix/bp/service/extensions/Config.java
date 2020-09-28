@@ -44,7 +44,7 @@ public class Config {
 		try {
 			Properties prop = new Properties();
 
-			String fileName = System.getProperty(SERVER_CONFIG_DIR) + CONFIG_PROPERTIES;
+			String fileName = System.getProperty( CONFIG_PROPERTIES;
 
 			logger.info("fileName:" + fileName);
 
@@ -53,13 +53,10 @@ public class Config {
 
 			logger.info("prop:" + prop);
 
-			Date time = new Date(System.currentTimeMillis());
-
-			// get the property value and print it out
 			String keyValue = prop.getProperty(key);
 
 			result = keyValue;
-			logger.info(key + "=" + keyValue + "\nProgram Ran on " + time);
+			logger.info(key + "=" + keyValue + "\nProgram Ran");
 
 		} catch (Exception e) {
 			logger.error("Exception: " + e);

@@ -36,20 +36,17 @@ public class GenerateOTP extends RESTWorkItemHandler {
 	private static final String FTX_HEADER = "ContentType=application/jsonAccept=application/json;Content-Type=application/json;X-Requested-With=XmlHttpRequest";
 	private static final String POST = "POST";
 	private static final String NUMBER = "number";
-	private static final String ORG = "org";
-	private static final String TENANTID = "tenantid";
-	private static final String USEREMAIL = "useremail";
+	private static final String ORG = "finantix";
+	private static final String TENANTID = "1";
 	private static final String PASSWORD = "password";
-	private static final String USER = "user";
-	private static final String SERVER = "server";
+	private static final String USER = "admin@thedigitalstack.com";
+	private static final String SERVER = "http://prd-inn-as-01.fx.lan:8181";
 	private static final String GENERATE_OTP = "GenerateOTP v1.0.1";
 	private static final String HTTPS_REST_NEXMO_COM_SMS_JSON = "https://rest.nexmo.com/sms/json";
 	private static final String RESULTS_VALUE = "OTP";
 
-	String serverURL = "/rest/otp/generate/";
-	String host = "";
-	String user = "admin@thedigitalstack.com";
-	String password = PASSWORD;
+	String serverURL = "/rest/otp/generate?Return-Token=true";
+
 	private static final Logger logger = LoggerFactory.getLogger(GenerateOTP.class);
 
 	@Override
@@ -58,25 +55,13 @@ public class GenerateOTP extends RESTWorkItemHandler {
 		logger.error(GENERATE_OTP);
 		WorkItemImpl customworkItem = new WorkItemImpl();
 
-		String useremail = "";
-		String tenantid = "";
-		String from = "finantix";
-		String number = "6591052920";
-
+		String useremail = "joseph.george@finanitx.com"; // get it from workflow
+		String number = "6591052920"; // get it from workflow
 		String jsonString = "";
-		Config util = new Config();
+
 		try {
 
-			host = util.getPropValue(SERVER);
-			user = util.getPropValue(USER);
-			password = util.getPropValue(PASSWORD);
-			useremail = util.getPropValue(USEREMAIL);
-			tenantid = util.getPropValue(TENANTID);
-
-			from = util.getPropValue(ORG);
-			number = util.getPropValue(NUMBER);
-
-			jsonString = "{\"tenant\":\"" + tenantid + "\",\"username\":\"" + user + "\",\"email\":\"" + useremail
+			jsonString = "{\"tenant\":\"" + TENANTID + "\",\"username\":\"" + USER + "\",\"email\":\"" + USEREMAIL
 					+ "\",\"locale\":\"en\"}";
 
 		} catch (Exception ex) {
@@ -88,20 +73,20 @@ public class GenerateOTP extends RESTWorkItemHandler {
 
 		customworkItem.setParameters(orignalparams);
 		customworkItem.setParameter(Constants.AUTH_TYPE, Constants.BASIC);
-		customworkItem.setParameter(Constants.LOGIN, user);
-		customworkItem.setParameter(Constants.LPASS, password);
+		customworkItem.setParameter(Constants.LOGIN, USER);
+		customworkItem.setParameter(Constants.LPASS, PASSWORD);
 		customworkItem.setParameter(CONTENT_TYPE, APPLICATION_JSON);
-		customworkItem.setParameter(URL, host + serverURL);
+		customworkItem.setParameter(URL, SERVER + serverURL);
 		customworkItem.setParameter(METHOD, POST);
 		customworkItem.setParameter(CONTENT_DATA, jsonString);
 		customworkItem.setParameter(HEADERS, FTX_HEADER);
 
 		logger.error("executeWorkItem getParameters : " + customworkItem.getParameters());
 		super.executeWorkItem(customworkItem, manager);
-	
+
 		String random = Config.generatorRandom(4);
 		String message = AUTHORIZATION_CODE + random + AUTHORIZE;
-		jsonString = "{\"from\": \"" + from + "\",\"text\": \"" + message + "\",\"to\": \"" + number
+		jsonString = "{\"from\": \"" + ORG + "\",\"text\": \"" + message + "\",\"to\": \"" + number
 				+ "\",\"api_key\": \" " + Config.getPropValue(Config.SMSAPIKEY) + " \",\"api_secret\": \" "
 				+ Config.getPropValue(Config.SMSAPISECRETKEY) + "  \"}";
 		customworkItem.setParameter(CONTENT_DATA, jsonString);
