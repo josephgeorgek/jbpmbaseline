@@ -61,7 +61,7 @@ public class GenerateOTP extends RESTWorkItemHandler {
 
 		try {
 
-			jsonString = "{\"tenant\":\"" + TENANTID + "\",\"username\":\"" + USER + "\",\"email\":\"" + USEREMAIL
+			jsonString = "{\"tenant\":\"" + TENANTID + "\",\"username\":\"" + USER + "\",\"email\":\"" + useremail
 					+ "\",\"locale\":\"en\"}";
 
 		} catch (Exception ex) {

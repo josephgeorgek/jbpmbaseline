@@ -35,33 +35,13 @@ public class Config {
 			otp[i] = (char) (obj.nextInt(10) + 48);
 		}
 
-		logger.info("Generated Number : " + String.valueOf(otp));
 		return String.valueOf(otp);
 	}
 
 	public static String getPropValue(String key) {
 
-		try {
-			Properties prop = new Properties();
-
-			String fileName = System.getProperty( CONFIG_PROPERTIES;
-
-			logger.info("fileName:" + fileName);
-
-			FileInputStream fis = new FileInputStream(fileName);
-			prop.load(fis);
-
-			logger.info("prop:" + prop);
-
-			String keyValue = prop.getProperty(key);
-
-			result = keyValue;
-			logger.info(key + "=" + keyValue + "\nProgram Ran");
-
-		} catch (Exception e) {
-			logger.error("Exception: " + e);
-		}
-		return result;
+	
+		return key;
 	}
 
 }
