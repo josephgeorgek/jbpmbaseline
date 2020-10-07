@@ -47,18 +47,31 @@ public class GenerateOTP extends RESTWorkItemHandler {
 
 	String serverURL = "/rest/otp/generate?Return-Token=true";
 
+	
+   
+    
 	private static final Logger logger = LoggerFactory.getLogger(GenerateOTP.class);
 
 	@Override
 	public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
+		
+		logger.error( logger.getName()+" Print all parameter");
+		Map<String, Object> test = workItem.getParameters();
+		
+		
+		    for (Map.Entry<String, Object> entry : test.entrySet()) {
+		    	logger.error(logger.getName()+ ">>"+ entry.getKey() + ": " + entry.getValue());
+		    }
+	
 
-		logger.error(GENERATE_OTP);
+		
 		WorkItemImpl customworkItem = new WorkItemImpl();
 
 		String useremail = "joseph.george@finanitx.com"; // get it from workflow
 		String number = "6591052920"; // get it from workflow
 		String jsonString = "";
-
+		
+	
 		try {
 
 			jsonString = "{\"tenant\":\"" + TENANTID + "\",\"username\":\"" + USER + "\",\"email\":\"" + useremail
@@ -84,20 +97,7 @@ public class GenerateOTP extends RESTWorkItemHandler {
 		logger.error("executeWorkItem getParameters : " + customworkItem.getParameters());
 		super.executeWorkItem(customworkItem, manager);
 
-		String random = Config.generatorRandom(4);
-		String message = AUTHORIZATION_CODE + random + AUTHORIZE;
-		jsonString = "{\"from\": \"" + ORG + "\",\"text\": \"" + message + "\",\"to\": \"" + number
-				+ "\",\"api_key\": \" " + Config.getPropValue(Config.SMSAPIKEY) + " \",\"api_secret\": \" "
-				+ Config.getPropValue(Config.SMSAPISECRETKEY) + "  \"}";
-		customworkItem.setParameter(CONTENT_DATA, jsonString);
-		customworkItem.setParameter(CONTENT_TYPE, APPLICATION_JSON);
-		customworkItem.setParameter(URL, HTTPS_REST_NEXMO_COM_SMS_JSON);
-		customworkItem.setParameter(METHOD, POST);
-		logger.error("executeWorkItem 2 getParameters : " + customworkItem.getParameters());
-		super.executeWorkItem(customworkItem, manager);
-		results.put(RESULTS_VALUE, random);
-		logger.error("executeWorkItem DONE : " + results);
-		manager.completeWorkItem(workItem.getId(), results);
+		
 	}
 
 	@Override
