@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public class VerifyOTP extends RESTWorkItemHandler {
 
 	private static final String USER_EMAIL = "user_email";
-	private static final String TOKEN = "TOKEN";
+	private static final String TOKEN = "token";
 	private static final String USER = "user";
 	private static final String SERVER = "SERVER";
 	private static final String SERVER_USER = "SERVER.SYS.USER";
@@ -72,8 +72,8 @@ public class VerifyOTP extends RESTWorkItemHandler {
 	private void getCustomWorkItem(WorkItem workItem, WorkItemImpl customworkItem, String jsonString) {
 		Map<String, Object> orignalparams = workItem.getParameters();
 		logger.error("executeWorkItem orignalparams : " + orignalparams);
-		
-		customworkItem.setParameters(orignalparams);
+		logger.error("executeWorkItem jsonString : " + jsonString);
+		//customworkItem.setParameters(orignalparams);
 		customworkItem.setParameter(Constants.AUTH_TYPE, Constants.BASIC);
 		customworkItem.setParameter(Constants.LOGIN, Config.getInstance().getPropValue(SERVER_USER));
 		customworkItem.setParameter(Constants.LPASS, Config.getInstance().getPropValue(SERVER_PASSWORD));
