@@ -40,7 +40,7 @@ public class Config {
 		try (InputStream input = Config.class.getClassLoader().getResourceAsStream(CONFIG_PROPERTIES)) {
 
 			if (input == null) {
-				logger.error("Sorry, unable to find "+Config.class.getClassLoader().getName()+">>"+CONFIG_PROPERTIES);
+				logger.error("Sorry, unable to find "+Config.class.getClassLoader()+">>"+CONFIG_PROPERTIES);
 				return prop;
 			}
 
