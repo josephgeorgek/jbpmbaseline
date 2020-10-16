@@ -1,32 +1,24 @@
 package com.finantix.bp.service.extensions;
 
-import org.kie.api.cdi.KSession;
-import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.process.WorkItem;
-import org.kie.api.runtime.process.WorkItemManager;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.drools.core.process.instance.impl.WorkItemImpl;
-import org.jbpm.process.workitem.rest.RESTServiceException;
-import org.jbpm.process.workitem.rest.RESTWorkItemHandler;
 import org.drools.core.util.StringUtils;
+import org.jbpm.process.workitem.rest.RESTWorkItemHandler;
+import org.kie.api.runtime.process.WorkItem;
+import org.kie.api.runtime.process.WorkItemManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class GenerateOTP extends RESTWorkItemHandler {
 
-	private static final String AUTHORIZE = " Use it to authorize the change";
-	private static final String AUTHORIZATION_CODE = "Authorization code:";
+	private static final String USER_EMAIL = "user_email";
+	private static final String USER = "user";
+	private static final String SERVER = "SERVER";
+	private static final String SERVER_USER = "SERVER.USER";
+	private static final String SERVER_PASSWORD = "SERVER.PASSWORD";
+	private static final String API_OTP_GENERATE = "API.OTP.GENERATE";
+	private static final String TENANT_ID = "tenant_id";
 	private static final String METHOD = "Method";
 	private static final String URL = "Url";
 	private static final String CONTENT_TYPE = "ContentType";
@@ -35,69 +27,67 @@ public class GenerateOTP extends RESTWorkItemHandler {
 	private static final String CONTENT_DATA = "ContentData";
 	private static final String FTX_HEADER = "ContentType=application/jsonAccept=application/json;Content-Type=application/json;X-Requested-With=XmlHttpRequest";
 	private static final String POST = "POST";
-	private static final String NUMBER = "number";
-	private static final String ORG = "finantix";
-	private static final String TENANTID = "1";
-	private static final String PASSWORD = "password";
-	private static final String USER = "admin@thedigitalstack.com";
-	private static final String SERVER = "http://prd-inn-as-01.fx.lan:8181";
+	private static final String TENANTID = "tenantid";
 	private static final String GENERATE_OTP = "GenerateOTP v1.0.1";
-	private static final String HTTPS_REST_NEXMO_COM_SMS_JSON = "https://rest.nexmo.com/sms/json";
 	private static final String RESULTS_VALUE = "OTP";
 
-	String serverURL = "/rest/otp/generate?Return-Token=true";
-
-	
-   
-    
 	private static final Logger logger = LoggerFactory.getLogger(GenerateOTP.class);
 
 	@Override
 	public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
-		
-		logger.error( logger.getName()+" Print all parameter");
-		Map<String, Object> test = workItem.getParameters();
-		
-		
-		    for (Map.Entry<String, Object> entry : test.entrySet()) {
-		    	logger.error(logger.getName()+ ">>"+ entry.getKey() + ": " + entry.getValue());
-		    }
-	
 
-		
+		printParams(workItem);
+
 		WorkItemImpl customworkItem = new WorkItemImpl();
-
-		String useremail = "joseph.george@finanitx.com"; // get it from workflow
-		String number = "6591052920"; // get it from workflow
-		String jsonString = "";
+		String tenant_id = (String) workItem.getParameter(TENANT_ID);
+		String user = (String) workItem.getParameter(USER);
+		String user_email = (String) workItem.getParameter(USER_EMAIL);
 		
-	
+
 		try {
 
-			jsonString = "{\"tenant\":\"" + TENANTID + "\",\"username\":\"" + USER + "\",\"email\":\"" + useremail
-					+ "\",\"locale\":\"en\"}";
+			getCustomWorkItem(workItem, customworkItem, getOTPBody(tenant_id, user, user_email));
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
+		logger.error("executeWorkItem getParameters : " + customworkItem.getParameters());
+		super.executeWorkItem(customworkItem, manager);
+		logger.error("Results " + workItem.getId() + " : " + results);
+		manager.completeWorkItem(workItem.getId(), results);
+
+	}
+
+	private void printParams(WorkItem workItem) {
+		logger.error(logger.getName() + " Print all parameter");
+		Map<String, Object> test = workItem.getParameters();
+
+		for (Map.Entry<String, Object> entry : test.entrySet()) {
+			logger.error(logger.getName() + ">>" + entry.getKey() + ": " + entry.getValue());
+		}
+	}
+
+	private void getCustomWorkItem(WorkItem workItem, WorkItemImpl customworkItem, String jsonString) {
 		Map<String, Object> orignalparams = workItem.getParameters();
 		logger.error("executeWorkItem orignalparams : " + orignalparams);
-
+		
 		customworkItem.setParameters(orignalparams);
 		customworkItem.setParameter(Constants.AUTH_TYPE, Constants.BASIC);
-		customworkItem.setParameter(Constants.LOGIN, USER);
-		customworkItem.setParameter(Constants.LPASS, PASSWORD);
+		customworkItem.setParameter(Constants.LOGIN, Config.getInstance().getPropValue(SERVER_USER));
+		customworkItem.setParameter(Constants.LPASS, Config.getInstance().getPropValue(SERVER_PASSWORD));
 		customworkItem.setParameter(CONTENT_TYPE, APPLICATION_JSON);
-		customworkItem.setParameter(URL, SERVER + serverURL);
+		customworkItem.setParameter(URL,
+				Config.getInstance().getPropValue(SERVER) + Config.getInstance().getPropValue(API_OTP_GENERATE));
 		customworkItem.setParameter(METHOD, POST);
 		customworkItem.setParameter(CONTENT_DATA, jsonString);
 		customworkItem.setParameter(HEADERS, FTX_HEADER);
+		printParams(customworkItem);
+	}
 
-		logger.error("executeWorkItem getParameters : " + customworkItem.getParameters());
-		super.executeWorkItem(customworkItem, manager);
-
-		
+	private String getOTPBody(String tenant_id, String user, String user_email) {
+		return "{\"tenant\":\"" + tenant_id + "\",\"username\":\"" + user + "\",\"email\":\"" + user_email
+				+ "\",\"locale\":\"en\"}";
 	}
 
 	@Override
@@ -113,8 +103,6 @@ public class GenerateOTP extends RESTWorkItemHandler {
 	protected void postProcessResult(String result, String resultClass, String contentType,
 			Map<String, Object> results) {
 
-		logger.error("postProcessResult  result: " + result);
-
 		if (!StringUtils.isEmpty(resultClass) && !StringUtils.isEmpty(contentType)) {
 			try {
 				Class<?> clazz = Class.forName(resultClass, true, classLoader);
@@ -128,7 +116,7 @@ public class GenerateOTP extends RESTWorkItemHandler {
 
 			results.put(PARAM_RESULT, result);
 		}
-		logger.error("postProcessResult executeWorkItem  results: " + results);
+
 		this.results = results;
 
 	}
