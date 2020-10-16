@@ -15,8 +15,8 @@ public class GenerateOTP extends RESTWorkItemHandler {
 	private static final String USER_EMAIL = "user_email";
 	private static final String USER = "user";
 	private static final String SERVER = "SERVER";
-	private static final String SERVER_USER = "SERVER.USER";
-	private static final String SERVER_PASSWORD = "SERVER.PASSWORD";
+	private static final String SERVER_USER = "SERVER.SYS.USER";
+	private static final String SERVER_PASSWORD = "SERVER.SYS.PASSWORD";
 	private static final String API_OTP_GENERATE = "API.OTP.GENERATE";
 	private static final String TENANT_ID = "tenant_id";
 	private static final String METHOD = "Method";
