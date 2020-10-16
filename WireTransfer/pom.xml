@@ -5,9 +5,10 @@
   <groupId>com.finantix.bp</groupId>
   <artifactId>WireTransfer</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-<!--   <packaging>kjar</packaging>  -->
+   <packaging>kjar</packaging> 
   <name>Wire Transfer</name>
   <description>Wire Transfer - External and Own Account</description>
+  <!--
 <dependencies>
   	<dependency>
 			<groupId>org.springframework</groupId>
@@ -73,5 +74,5 @@
        <version>1.7.5</version>
    </dependency>
   </dependencies>
-  
+   -->
 </project>
