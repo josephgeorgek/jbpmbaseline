@@ -41,7 +41,7 @@ public class Config {
 		
 		
 		try {
-		InputStream input = new FileInputStream(System.getProperty("shared.config.dir")+CONFIG_PROPERTIES);
+		InputStream input = new FileInputStream(System.getProperty(SERVER_CONFIG_DIR)+CONFIG_PROPERTIES);
 
 			if (input == null) {
 				logger.error("Sorry, unable to find "+Config.class.getClassLoader()+">>"+CONFIG_PROPERTIES);
