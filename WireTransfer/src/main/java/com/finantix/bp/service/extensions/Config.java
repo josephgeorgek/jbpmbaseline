@@ -1,7 +1,9 @@
 package com.finantix.bp.service.extensions;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -36,7 +38,34 @@ public class Config {
 	private static Properties loadConfig() {
 
 		Properties prop = new Properties();
+		
+		
+		try {
+		InputStream input = new FileInputStream(System.getProperty("shared.config.dir")+CONFIG_PROPERTIES);
 
+			if (input == null) {
+				logger.error("Sorry, unable to find "+Config.class.getClassLoader()+">>"+CONFIG_PROPERTIES);
+				return prop;
+			}
+
+			// load a properties file from class path, inside static method
+			prop.load(input);
+
+			// get the property value and print it out
+			logger.error(prop.getProperty("SERVER"));
+			logger.error(prop.getProperty("SERVER.SYS.USER"));
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return prop;
+	}
+	private static Properties loadConfiguration() {
+
+		Properties prop = new Properties();
+		
+		
+		
 		try (InputStream input = Config.class.getClassLoader().getResourceAsStream(CONFIG_PROPERTIES)) {
 
 			if (input == null) {
