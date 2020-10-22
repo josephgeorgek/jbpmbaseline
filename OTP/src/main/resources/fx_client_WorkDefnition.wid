@@ -1,0 +1,31 @@
+[
+  
+  
+  [
+    "name" : "GenerateOTP",
+    "parameters" : [
+        "clientid" : new StringDataType()
+    
+    ],
+    "results" : [
+        "Result" : new ObjectDataType(),
+    ],
+    "displayName" : "GenerateOTP",
+    "icon" : "defaultservicenodeicon.png",
+    "category" : "OTP"
+  ],
+  [
+    "name" : "VerifyOTP",
+    "parameters" : [
+        "clientid" : new StringDataType()
+    
+    ],
+    "results" : [
+        "Result" : new ObjectDataType(),
+    ],
+    "displayName" : "VerifyOTP",
+    "icon" : "defaultservicenodeicon.png",
+    "category" : "OTP"
+  ]
+   
+]
